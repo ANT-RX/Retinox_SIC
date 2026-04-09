@@ -1,0 +1,55 @@
+<Window x:Class="Retinox.View.HistorialView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="540" Width="960"
+        WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" 
+        Background="Transparent" AllowsTransparency="True">
+
+    <Border Style="{StaticResource EstiloContenedorPrincipal}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                <Button Style="{StaticResource estiloBaseMinSalir}" Content="?" Click="btnAyuda_Click"/>
+                <Button Style="{StaticResource estiloBaseMinSalir}" Content="-" Click="btnMinimizar_Click"/>
+                <Button Style="{StaticResource estiloBaseMinSalir}" Content="x" Click="btnCerrar_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Historial" Style="{StaticResource estiloTitulos}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <TextBlock Text="Análisis realizados:" FontSize="18" Foreground="#555" Margin="0,0,0,15" HorizontalAlignment="Center"/>
+
+                <ListBox x:Name="lstHistorial" Width="700"
+                         Background="Transparent" BorderThickness="0" 
+                         ScrollViewer.VerticalScrollBarVisibility="Auto"
+                         ItemsSource="{Binding RegistrosHistorial}"
+                         MaxHeight="350">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" FontSize="18" Foreground="#00796B" 
+                                       HorizontalAlignment="Center" Margin="0,5"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+
+            <Grid Grid.Row="2" VerticalAlignment="Bottom" Margin="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Style="{StaticResource estiloButtonBase}" Content="&lt;" Width="60" Height="60" Click="btnAtras_Click"/>
+                <Button Grid.Column="2" Style="{StaticResource estiloButtonBase}" Content="Limpiar Historial" Width="180" Height="40" Foreground="White" Background="#c0392b" Click="btnLimpiar_Click"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

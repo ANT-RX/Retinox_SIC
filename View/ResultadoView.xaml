@@ -1,0 +1,59 @@
+<Window x:Class="Retinox.View.ResultadoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="540" Width="960"
+        WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" 
+        Background="Transparent" AllowsTransparency="True">
+
+    <Border Style="{StaticResource EstiloContenedorPrincipal}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                <Button Style="{StaticResource estiloBaseMinSalir}" Content="?" Click="btnAyuda_Click"/>
+                <Button Style="{StaticResource estiloBaseMinSalir}" Content="-" Click="btnMinimizar_Click"/>
+                <Button Style="{StaticResource estiloBaseMinSalir}" Content="x" Click="btnCerrar_Click"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="1" Text="Resultado de análisis" Style="{StaticResource estiloTitulos}" 
+                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Probabilidad de padecer:" FontSize="24" FontWeight="Bold" Foreground="#333" Margin="0,0,0,20"/>
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding ResultadoTexto}" FontSize="28" Foreground="#00796B" FontWeight="Bold" Margin="0,10" TextWrapping="Wrap" TextAlignment="Center" />
+                    <Button Width="150" Height="40" Margin="0,20,0,0" Style="{StaticResource estiloButtonBase}" Content="Exportar a PDF" Command="{Binding ExportarPdfCommand}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="20">
+                <Button Style="{StaticResource estiloButtonBase}" Content="&lt;" Width="60" Height="60" Click="btnAtras_Click"/>
+                <Separator Width="780" Background="Transparent"/>
+            </StackPanel>
+
+            <!-- Loading Overlay -->
+            <Grid x:Name="OverlayCarga" Background="#E0FFFFFF" Grid.RowSpan="3" Panel.ZIndex="100">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsBusy}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="Analizando Retina..." FontSize="36" FontWeight="Bold" Foreground="#00796B" Margin="0,0,0,20"/>
+                    <TextBlock Text="⏳" FontSize="60" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

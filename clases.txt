@@ -1,0 +1,5 @@
+Ojo normal
+Retinopatía ligera
+Retinopatía moderada
+Retinopatía severa
+Retinopatía proliferativa

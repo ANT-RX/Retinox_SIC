@@ -1,0 +1,36 @@
+﻿<Window x:Class="Retinox.View.InfoView"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Información" 
+        Height="540" Width="960"
+        WindowStyle="None" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen" 
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Border Style="{StaticResource EstiloContenedorPrincipal}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                <Button Style="{StaticResource estiloBaseMinSalir}" Content="-" Click="btnMinimizar_Click"/>
+                <Button Style="{StaticResource estiloBaseMinSalir}" Content="x" Click="btnCerrar_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Sistema de detección" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#333"/>
+                <TextBlock Text="de retinopatía" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#333" Margin="0,0,0,20"/>
+
+                <TextBlock Text="La salud visual es importante para tu calidad de vida, cuidemos tu visión juntos." 
+                           FontSize="20" HorizontalAlignment="Center" Margin="0,20" Foreground="#555"/>
+
+                <TextBlock Text="Proyecto elaborado por:" FontSize="22" HorizontalAlignment="Center" Margin="0,20,0,0" Foreground="#00796B"/>
+                <TextBlock Text="Equipo 21" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#00796B"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

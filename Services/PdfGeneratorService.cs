@@ -23,9 +23,9 @@ namespace Retinox.Services
                 XGraphics gfx = XGraphics.FromPdfPage(page);
 
                 // Fuentes
-                XFont fontTitulo = new XFont("Arial", 20, XFontStyle.Bold);
-                XFont fontSubtitulo = new XFont("Arial", 14, XFontStyle.Bold);
-                XFont fontNormal = new XFont("Arial", 12, XFontStyle.Regular);
+                XFont fontTitulo = new XFont("Arial", 20, XFontStyleEx.Bold);
+                XFont fontSubtitulo = new XFont("Arial", 14, XFontStyleEx.Bold);
+                XFont fontNormal = new XFont("Arial", 12, XFontStyleEx.Regular);
 
                 // Dibujar el título
                 gfx.DrawString("Reporte de Análisis de Retinopatía (Retinox)", fontTitulo, XBrushes.DarkBlue,
@@ -51,7 +51,7 @@ namespace Retinox.Services
                 string[] lineas = resultadoPrediccion.Split(new[] { Environment.NewLine, "\n" }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (string linea in lineas)
                 {
-                    gfx.DrawString($"• {linea}", new XFont("Arial", 14, XFontStyle.Bold), XBrushes.DarkRed, new XRect(60, currentY, page.Width, 20), XStringFormats.TopLeft);
+                    gfx.DrawString($"• {linea}", new XFont("Arial", 14, XFontStyleEx.Bold), XBrushes.DarkRed, new XRect(60, currentY, page.Width, 20), XStringFormats.TopLeft);
                     currentY += 25;
                 }
 
